@@ -5,7 +5,10 @@ import "video.js/dist/video-js.css";
 import { useVideoJS } from "react-hook-videojs";
 
 const App = () => {
+  //const [source, setSource] = useState("//api.yamsonline.com/playmovie?id=30136&username=Nerowk&password=aa&name=Raksha+Bandhan+%282022%29+Hindi+1080p+HDTS+x264+AAC.mkv");
+  //const [source, setSource] = useState("//api.yamsonline.com/playmovie?id=29585&username=Nerowk&password=aa&name=Bachchhan+Paandey+%282022%29+%5BHindi+-+1080p+HD+AVC+-+UNTOUCHED+-+DDP+5.1+-+x264+-+7.2GB+-+ESubs%5D.mkv");
   const [source, setSource] = useState("//vjs.zencdn.net/v/oceans.mp4");
+
   const h = 2;
   const [vtt, setVtt] = useState(true);
   const [controls, setControls] = useState(true);
@@ -13,12 +16,14 @@ const App = () => {
   const [isMount, setIsMount] = useState(true);
 
   const videoJsOptions = {
-    sources: [{ src: source }],
+    sources: [{ src: source,  type: 'video/webm'}],
+    type: 'video/webm',
     controls,
     autoplay,
   };
   const className = "my-class";
   const { Video, ready, player } = useVideoJS(videoJsOptions, className);
+  console.log('====');
   console.log({ Video, ready, player });
   return (
     <>
@@ -33,6 +38,7 @@ const App = () => {
               default
             />
           ) : null}
+          <source src="https://api.yamsonline.com/playmovie?id=30136&username=Nerowk&password=aa&name=Raksha+Bandhan+%282022%29+Hindi+1080p+HDTS+x264+AAC.mkv" type='video/webm'></source>
         </Video>
       )}
       <div style={{ display: "flex", flexDirection: "column", margin: "20px" }}>
